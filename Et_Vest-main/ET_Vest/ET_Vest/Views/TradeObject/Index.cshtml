@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ET_Vest.Models.TradeObject>
+
+<h2>TradeObjects List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Employee</th>
+        @*     @if (User.IsInRole("Admin"))
+            {
+                <th>Actions</th>
+            } *@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tradeObjects in Model)
+        {
+            <tr>
+                <td>@tradeObjects.Name</td>
+                <td>@tradeObjects.Address</td>
+                <td>@tradeObjects.City</td>
+                <td>@tradeObjects.Employee</td>
+            @*     <td>
+                    @string.Join(", ", tradeObjects.Requests.Select(m => m.Id).ToList())
+                </td> *@
+              @*   @if (User.IsInRole("Admin"))
+                { *@
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@tradeObjects.Id"
+                           class="btn btn-primary">Edit</a>
+                        <form asp-action="Delete" asp-route-id="@tradeObjects.Id" method="post"
+                              onsubmit="return confirm('Are you sure you want to delete this tradeObject?');">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+               @*  } *@
+            </tr>
+        }
+    </tbody>
+</table>
+@* @if (User.IsInRole("Admin"))
+{ *@
+    <a asp-action="Add" asp-controller="TradeObject" class="btn btn-success">Add New TradeObject</a>
+@* } *@

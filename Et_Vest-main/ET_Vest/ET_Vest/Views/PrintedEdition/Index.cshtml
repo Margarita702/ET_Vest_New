@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ET_Vest.Models.PrintedEdition>
+
+<h2>PrintedEditions List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Cathegory</th>
+            @*<th>Providers</th>*@
+            <th>Periodicity</th>
+            <th>DeliveredUnitPrice</th>
+            <th>SalePrice</th>
+            @*<th>Requests</th>*@
+        @*     @if (User.IsInRole("Admin")) *@
+           @*   { *@
+              @*   <th>Actions</th> *@
+           @*  }  *@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var printedEdition in Model)
+        {
+            <tr>
+                <td>@printedEdition.Title</td>
+                <td>@printedEdition.Cathegory</td>
+                <td>@printedEdition.Periodicity</td>
+                <td>@printedEdition.DeliveredUnitPrice</td>
+                <td>@printedEdition.SalePrice</td>
+               @*  @if (User.IsInRole("Admin"))
+                { *@
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@printedEdition.PrintedEditionId"
+                           class="btn btn-primary">Edit</a>
+                        <form asp-action="Delete" asp-route-id="@printedEdition.PrintedEditionId" method="post"
+                              onsubmit="return confirm('Are you sure you want to delete this print edition?');">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                @* } *@
+            </tr>
+        }
+    </tbody>
+</table>
+@* @if (User.IsInRole("Admin"))
+{ *@
+    <a asp-action="Add" asp-controller="PrintedEdition" class="btn btn-success">
+        Add New PrintEdition
+    </a>
+@* } *@

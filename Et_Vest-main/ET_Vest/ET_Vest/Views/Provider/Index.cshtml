@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ET_Vest.Models.Provider>
+
+<h2>Providers List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>PhoneNumber</th>
+            <th>Email</th>
+            <th>City</th>
+          @*   <th>PrintEditionProviders</th> *@
+         @*    @if (User.IsInRole("Admin"))
+            {
+                <th>Actions</th>
+            } *@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var provider in Model)
+        {
+            <tr>
+                <td>@provider.Name</td>
+                <td>@provider.PhoneNumber</td>
+                <td>@provider.Email</td>
+                <td>@provider.City</td>
+            
+                <td>
+                    @string.Join(", ", provider.PrintEditionProviders
+                             .Select(m => m.PrintedEdition.Title).ToList())
+                </td>
+              
+               @*  @if (User.IsInRole("Admin"))
+                { *@
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@provider.ProviderId" class="btn btn-primary">Edit</a>
+                        <form asp-action="Delete" asp-route-id="@provider.ProviderId" method="post"
+                              onsubmit="return confirm('Are you sure you want to delete this provider?');">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+               @*  } *@
+            </tr>
+        }
+    </tbody>
+</table>
+@* @if (User.IsInRole("Admin"))
+{ *@
+    <a asp-action="Add" asp-controller="Provider" class="btn btn-success">Add New Provider</a>
+@* } *@

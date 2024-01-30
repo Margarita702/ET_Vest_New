@@ -1,0 +1,30 @@
+﻿ @model ET_Vest.Data.ViewModels.PrintedEditionProviderViewModel
+
+<h2>Edit Provider</h2>
+<form method="post" asp-action="Edit" asp-controller="Provider">
+    <div class="form-control">
+        <label asp-for="@Model.Provider.Name" class="form-label"></label>
+        <input asp-for="@Model.Provider.Name" class="form-control" />
+    </div>
+    <div class="form-control">
+        <label asp-for="@Model.Provider.PhoneNumber" class="form-label"></label>
+        <input asp-for="@Model.Provider.PhoneNumber" class="form-control" />
+    </div>
+    <div class="form-control">
+        <label asp-for="@Model.Provider.Email" class="form-label"></label>
+        <input asp-for="@Model.Provider.Email" class="form-control" />
+    </div>
+    <div class="form-control">
+        <label asp-for="@Model.Provider.City" class="form-label"></label>
+        <input asp-for="@Model.Provider.City" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.PrintedEditionProvider"></label>
+        <select asp-for="@Model.PrintedEditionProvider"
+                asp-items="@(new SelectList(ViewBag.PrintedEditions,"Title"))"
+                class="form-control"></select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
