@@ -1,7 +1,10 @@
 ﻿using ET_Vest.Data;
+using ET_Vest.Data.ViewModels;
 using ET_Vest.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.DotNet.Scaffolding.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace ET_Vest.Controllers
@@ -48,30 +51,35 @@ namespace ET_Vest.Controllers
         // [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
-            var printedEdition = context.PrintedEditions
-                .Include(m => m.PrintEditionProviders)
-                .Include(m => m.Requests)
-                .FirstOrDefault(m => m.PrintedEditionId == id);
+            var printedEdition = context.PrintedEditions.Find(id);
+
             if (printedEdition == null)
             {
                 return NotFound();
             }
 
-            ViewBag.Providers = context.PrintedEditionProviders.Include
-                (ma => ma.Provider).ToList();
-            ViewBag.Requests = context.Requests.ToList();
+            var printedEditionProvider = context.PrintedEditionProviders
+                    .Include(pe => pe.Provider)
+                    .FirstOrDefault(pe => pe.PrintedEditionId == id);
 
-            return View(printedEdition);
+            var viewModel = new PrintedEditionProviderViewModel
+            {
+                PrintedEdition = printedEdition,
+                PrintedEditionProvider = printedEditionProvider
+            };
+            ViewBag.Providers = new SelectList(context.Providers, "ProviderId", "Name");
+            return View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(PrintedEdition printedEdition)
+        public IActionResult Edit(PrintedEditionProviderViewModel viewModel)
         {
-            context.PrintedEditions.Update(printedEdition);
+            //update edition details
+            context.PrintedEditions.Update(viewModel.PrintedEdition);
+            //update printed edition provider details
+         //   context.Entry(viewModel.PrintedEditionProvider).State = EntityState.Modified;
             context.SaveChanges();
             return RedirectToAction("Index");
-
-            //  return View(printedEdition);
         }
 
         [HttpPost]

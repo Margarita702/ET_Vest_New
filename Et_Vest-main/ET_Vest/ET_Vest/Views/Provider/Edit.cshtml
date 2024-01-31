@@ -20,11 +20,13 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="@Model.PrintedEditionProvider"></label>
-        <select asp-for="@Model.PrintedEditionProvider"
-                asp-items="@(new SelectList(ViewBag.PrintedEditions,"Title"))"
+        <label asp-for="@Model.PrintedEditionProvider.PrintedEditionId" class="form-label"></label>
+        <select asp-for="@Model.PrintedEditionProvider.PrintedEditionId"
+                asp-items="@ViewBag.PrintedEditions"
                 class="form-control"></select>
     </div>
-    
-    <button type="submit" class="btn btn-primary">Update</button>
+    <div class="form-group">
+        <input asp-for="@Model.Provider.ProviderId" class="d-done" value="@Model.Provider.ProviderId" />
+        <input type="submit" value="Update" class="btn btn-primary" asp-sction="Edit" />
+    </div>
 </form>

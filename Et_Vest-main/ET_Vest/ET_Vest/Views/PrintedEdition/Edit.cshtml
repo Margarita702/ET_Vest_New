@@ -1,31 +1,50 @@
 ﻿@using ET_Vest.Models.Enums
-@model ET_Vest.Models.PrintedEdition
+ @model ET_Vest.Data.ViewModels.PrintedEditionProviderViewModel
 
 <h2>Edit PrintedEdition</h2>
-<form method="post" asp-controller="PrintedEdition" asp-action="Edit">
-    <div class="form-group">
-        <label asp-for="Title"></label>
-        <input asp-for="Title" class="form-control" />
+<form method="post" asp-action="Edit" asp-controller="PrintedEdition">
+
+    <div class="form-control">
+        <label asp-for="@Model.PrintedEdition.Title" class="form-label"></label>
+        <input asp-for="@Model.PrintedEdition.Title" class="form-control" />
     </div>
-    <div class="form-group">
-        <label asp-for="Cathegory"></label>
-        <select asp-for="Cathegory" asp-items="Html.GetEnumSelectList<Cathegory>()" class="form-control">
-            <option value="">Select an Category</option>
+
+    <div class="form-control">
+        <label asp-for="@Model.PrintedEdition.Cathegory" class="form-label"></label>
+       @*  <input asp-for="@Model.PrintedEdition.Cathegory" class="form-control" /> *@
+        <select asp-for="@Model.PrintedEdition.Cathegory" asp-items="Html.GetEnumSelectList<Cathegory>()" class="form-control">
+            <option value="">Select a Category</option>
         </select>
     </div>
-    <div class="form-group">
-        <label asp-for="Periodicity"></label>
-        <select asp-for="Periodicity" asp-items="Html.GetEnumSelectList<Periodicity>()" class="form-control">
-            <option value="">Select an Periodicity</option>
+    <div class="form-control">
+        <label asp-for="@Model.PrintedEdition.Periodicity" class="form-label"></label>
+        @* <input asp-for="@Model.PrintedEdition.Periodicity" class="form-control" /> *@
+        <select asp-for="@Model.PrintedEdition.Periodicity" asp-items="Html.GetEnumSelectList<Periodicity>()" class="form-control">
+            <option value="">Select a Periodicity</option>
         </select>
     </div>
-    <div class="form-group">
-        <label asp-for="DeliveredUnitPrice"></label>
-        <input asp-for="DeliveredUnitPrice" class="form-control" />
+    <div class="form-control">
+        <label asp-for="@Model.PrintedEdition.DeliveredUnitPrice" class="form-label"></label>
+        <input asp-for="@Model.PrintedEdition.DeliveredUnitPrice" class="form-control" />
     </div>
-    <div class="form-group">
-        <label asp-for="SalePrice"></label>
-        <input asp-for="SalePrice" class="form-control" />
+    <div class="form-control">
+        <label asp-for="@Model.PrintedEdition.SalePrice" class="form-label"></label>
+        <input asp-for="@Model.PrintedEdition.SalePrice" class="form-control" />
     </div>
-    <button type="submit" class="btn btn-primary">Update</button>
+
+
+  @*   <div class="form-group">
+        <label asp-for="@Model.PrintedEditionProvider.ProviderId" class="form-label"></label>
+        <select asp-for="@Model.PrintedEditionProvider.ProviderId"
+                asp-items="@ViewBag.Providers"
+                class="form-control"></select>
+    </div> *@
+    <div class="form-group">
+        <input asp-for="@Model.PrintedEdition.PrintedEditionId" class="d-done" value="@Model.PrintedEdition.PrintedEditionId" />
+        <input type="submit" value="Update" class="btn btn-primary" asp-sction="Edit" />
+    </div>
 </form>
+
+
+
+

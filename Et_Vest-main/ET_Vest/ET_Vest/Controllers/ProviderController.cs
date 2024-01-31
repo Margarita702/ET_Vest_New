@@ -66,19 +66,19 @@ namespace ET_Vest.Controllers
                 Provider = provider,
                 PrintedEditionProvider = printedEditionProvider
             };
-
+            ViewBag.PrintedEditions = new SelectList(context.PrintedEditions, "PrintedEditionId", "Title");
             return View(viewModel);
         }
         [HttpPost]
-        public IActionResult Edit(Provider provider)
+        public IActionResult Edit(PrintedEditionProviderViewModel viewModel)
         {
-            if (ModelState.IsValid)
-            {
-                context.Providers.Update(provider);
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(provider);
+            //update provider details
+            context.Providers.Update(viewModel.Provider);
+            //update printed edition provider details
+            context.Entry(viewModel.PrintedEditionProvider).State = EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
         [HttpPost]

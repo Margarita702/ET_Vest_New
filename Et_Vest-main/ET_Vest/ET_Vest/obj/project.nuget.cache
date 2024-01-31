@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CCEoc79od7v7uI3U0nDEMU7fW1Rxt/DKBiYz61cE9HVbU+ee2AeVSHbhskHvxi86HknAh28jojnTIa1LKhk3/g==",
+  "dgSpecHash": "7P0hFCrBqvbSWfkTlvLSBZ3T9uoEt7DbVGfnRbGYdqcxjLB1e41WzHv2moLDlyXF12m6O/lpU/zzGO4fM1a95A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Desktop\\Et_Vest-main\\ET_Vest\\ET_Vest\\ET_Vest.csproj",
+  "projectFilePath": "C:\\Users\\User\\Desktop\\ET_Vest_GitHub\\ET_Vest_New\\Et_Vest-main\\ET_Vest\\ET_Vest\\ET_Vest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
