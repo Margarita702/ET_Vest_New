@@ -8,7 +8,6 @@ namespace ET_Vest.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public string City { get; set; }
         public string Employee { get; set; }
         public List<Request> Requests { get; set; }
     }

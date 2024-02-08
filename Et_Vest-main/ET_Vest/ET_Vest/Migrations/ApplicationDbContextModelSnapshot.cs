@@ -110,6 +110,9 @@ namespace ET_Vest.Migrations
                     b.Property<int>("Periodicity")
                         .HasColumnType("int");
 
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
                     b.Property<double>("SalePrice")
                         .HasColumnType("float");
 
@@ -216,10 +219,6 @@ namespace ET_Vest.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

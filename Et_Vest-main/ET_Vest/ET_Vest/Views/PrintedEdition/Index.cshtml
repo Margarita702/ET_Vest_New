@@ -8,8 +8,10 @@
             <th>Cathegory</th>
             @*<th>Providers</th>*@
             <th>Periodicity</th>
+            <th>Quantity</th>
             <th>DeliveredUnitPrice</th>
             <th>SalePrice</th>
+
             @*<th>Requests</th>*@
         @*     @if (User.IsInRole("Admin")) *@
            @*   { *@
@@ -24,6 +26,7 @@
                 <td>@printedEdition.Title</td>
                 <td>@printedEdition.Cathegory</td>
                 <td>@printedEdition.Periodicity</td>
+                <td>@printedEdition.Quantity</td>
                 <td>@printedEdition.DeliveredUnitPrice</td>
                 <td>@printedEdition.SalePrice</td>
                @*  @if (User.IsInRole("Admin"))
