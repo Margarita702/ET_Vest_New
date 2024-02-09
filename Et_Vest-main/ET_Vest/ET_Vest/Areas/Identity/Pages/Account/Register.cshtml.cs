@@ -117,7 +117,7 @@ namespace ET_Vest.Areas.Identity.Pages.Account
             public string PhoneNumber { get; set; }
 
 
-            [RegularExpression("^(Provider|Admin)$", ErrorMessage ="The role should be 'Provider' or 'Admin' only.")]
+            [RegularExpression("^(Employee|Admin)$", ErrorMessage ="The role should be 'Employee' or 'Admin' only.")]
             public string? Role { get; set; }
         }
 
@@ -139,6 +139,9 @@ namespace ET_Vest.Areas.Identity.Pages.Account
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                user.FirstName=Input.FirstName;
+                user.LastName=Input.LastName;
+                user.UserName=Input.Username;
 
                 if (result.Succeeded)
                 {
