@@ -23,35 +23,35 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
 
-                        @*   @if (User.Identity.IsAuthenticated) *@
-                        @* { *@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PrintedEdition" asp-action="Index">PrintedEditions</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Provider" asp-action="Index">Providers</a>
-                        </li>
-                        @*   @if (User.IsInRole("Admin")) *@
-                        @*  { *@
-                        @*     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="PrintedEditionProvider" asp-action="Index">PrintedEdition-Provider</a>
-                        </li>*@
-                        @if (User.IsInRole("Owner"))
+                        @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Identity"
-                                   asp-page="/Account/Register">Register</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="PrintedEdition" asp-action="Index">PrintedEditions</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Provider" asp-action="Index">Providers</a>
+                            </li>
+                            @*   @if (User.IsInRole("Admin")) *@
+                            @*  { *@
+                            @*     <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="PrintedEditionProvider" asp-action="Index">PrintedEdition-Provider</a>
+                        </li>*@
+                            @if (User.IsInRole("Owner"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Identity"
+                                       asp-page="/Account/Register">Register</a>
+                                </li>
+                            }
+                            @*   } *@
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Request" asp-action="Index">Requests</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="TradeObject" asp-action="Index">TradeObjects</a>
                             </li>
                         }
-                        @*   } *@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Request" asp-action="Index">Requests</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TradeObject" asp-action="Index">TradeObjects</a>
-                        </li>
-                        @*  } *@
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
