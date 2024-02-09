@@ -1,4 +1,3 @@
-using Cinema.Data;
 using ET_Vest.Data;
 using ET_Vest.Models;
 using Microsoft.AspNetCore.Identity;

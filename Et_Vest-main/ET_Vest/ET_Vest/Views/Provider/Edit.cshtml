@@ -19,12 +19,12 @@
         <input asp-for="@Model.Provider.City" class="form-control" />
     </div>
 
-    <div class="form-group">
+@*     <div class="form-group">
         <label asp-for="@Model.PrintedEditionProvider.PrintedEditionId" class="form-label"></label>
         <select asp-for="@Model.PrintedEditionProvider.PrintedEditionId"
                 asp-items="@ViewBag.PrintedEditions"
                 class="form-control"></select>
-    </div>
+    </div> *@
     <div class="form-group">
         <input asp-for="@Model.Provider.ProviderId" class="d-done" value="@Model.Provider.ProviderId" />
         <input type="submit" value="Update" class="btn btn-primary" asp-sction="Edit" />

@@ -29,7 +29,7 @@ namespace ET_Vest.Controllers
         }
 
         //Add PrintedEdition
-        //   [Authorize(Roles = "Admin")]
+         [Authorize(Roles = "Owner")]
         public IActionResult Add()
         {
             ViewBag.Providers = context.PrintedEditionProviders.Include
@@ -48,7 +48,7 @@ namespace ET_Vest.Controllers
         }
 
         //Update Printed Editions
-        // [Authorize(Roles = "Admin")]
+         [Authorize(Roles = "Owner")]
         public IActionResult Edit(int id)
         {
             var printedEdition = context.PrintedEditions.Find(id);
@@ -83,7 +83,7 @@ namespace ET_Vest.Controllers
         }
 
         [HttpPost]
-        //  [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Owner")]
         public IActionResult Delete(int id)
         {
             var printedEditions = context.PrintedEditions.Find(id);

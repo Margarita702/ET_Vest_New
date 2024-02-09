@@ -19,7 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using Cinema.Data;
+using ET_Vest.Data;
 
 namespace ET_Vest.Areas.Identity.Pages.Account
 {
@@ -146,9 +146,9 @@ namespace ET_Vest.Areas.Identity.Pages.Account
                     {
                         await _userManager.AddToRoleAsync(user, Roles.Admin.ToString());
                     }
-                    else if(Input.Role=="Provider")
+                    else if(Input.Role=="Employee")
                     {
-                        await _userManager.AddToRoleAsync(user, Roles.Provider.ToString());
+                        await _userManager.AddToRoleAsync(user, Roles.Employee.ToString());
                     }
 
                     _logger.LogInformation("User created a new account with password.");

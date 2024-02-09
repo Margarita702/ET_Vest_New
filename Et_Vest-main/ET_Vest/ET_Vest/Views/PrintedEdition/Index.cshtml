@@ -13,10 +13,10 @@
             <th>SalePrice</th>
 
             @*<th>Requests</th>*@
-        @*     @if (User.IsInRole("Admin")) *@
-           @*   { *@
-              @*   <th>Actions</th> *@
-           @*  }  *@
+            @if (User.IsInRole("Admin"))
+            {
+                <th>Actions</th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -29,8 +29,8 @@
                 <td>@printedEdition.Quantity</td>
                 <td>@printedEdition.DeliveredUnitPrice</td>
                 <td>@printedEdition.SalePrice</td>
-               @*  @if (User.IsInRole("Admin"))
-                { *@
+                @if (!User.IsInRole("Employee"))
+                {
                     <td>
                         <a asp-action="Edit" asp-route-id="@printedEdition.PrintedEditionId"
                            class="btn btn-primary">Edit</a>
@@ -39,14 +39,14 @@
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
-                @* } *@
+                }
             </tr>
         }
     </tbody>
 </table>
-@* @if (User.IsInRole("Admin"))
-{ *@
+@if (!User.IsInRole("Employee"))
+{
     <a asp-action="Add" asp-controller="PrintedEdition" class="btn btn-success">
         Add New PrintEdition
     </a>
-@* } *@
+}

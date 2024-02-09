@@ -1,5 +1,6 @@
 ﻿using ET_Vest.Data;
 using ET_Vest.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Sockets;
@@ -25,6 +26,7 @@ namespace ET_Vest.Controllers
 
             return View(requests);
         }
+        [Authorize(Roles = "Owner")]
 
         public IActionResult Add()
         {
@@ -36,13 +38,15 @@ namespace ET_Vest.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(Request request)
+        public IActionResult Add(Request request)
         {
             request.Status = "Изчакваща";
             context.Requests.Add(request);
             context.SaveChanges();
             return RedirectToAction("Index");
+
         }
+        [Authorize(Roles = "Owner")]
         public IActionResult Edit(int id)
         {
             var request = context.Requests
@@ -71,6 +75,7 @@ namespace ET_Vest.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Owner")]
         [HttpPost]
         public IActionResult Delete(int id)
         {
@@ -85,7 +90,7 @@ namespace ET_Vest.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = "Employee")]
         [HttpPost]
         public IActionResult SentToOwner(int id)
         {
@@ -102,6 +107,7 @@ namespace ET_Vest.Controllers
 
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "Owner")]
         [HttpPost]
         public IActionResult SentToProvider(int id)
         {
@@ -118,6 +124,8 @@ namespace ET_Vest.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [Authorize(Roles = "Employee")]
         [HttpPost]
         public IActionResult DoneRequest(int id)
         {

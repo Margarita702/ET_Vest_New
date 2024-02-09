@@ -1,10 +1,12 @@
 ﻿using ET_Vest.Data;
 using ET_Vest.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ET_Vest.Controllers
 {
+    [Authorize(Roles = "Owner")]
     public class PrintedEditionProviderController : Controller
     {
         private readonly ApplicationDbContext context;

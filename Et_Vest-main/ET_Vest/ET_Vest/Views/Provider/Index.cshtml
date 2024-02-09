@@ -9,10 +9,10 @@
             <th>Email</th>
             <th>City</th>
           @*   <th>PrintEditionProviders</th> *@
-         @*    @if (User.IsInRole("Admin"))
+            @if (!User.IsInRole("Employee"))
             {
                 <th>Actions</th>
-            } *@
+            }
         </tr>
     </thead>
     <tbody>
@@ -24,13 +24,13 @@
                 <td>@provider.Email</td>
                 <td>@provider.City</td>
             
-                <td>
+              @*   <td>
                     @string.Join(", ", provider.PrintEditionProviders
                              .Select(m => m.PrintedEdition.Title).ToList())
-                </td>
+                </td> *@
               
-               @*  @if (User.IsInRole("Admin"))
-                { *@
+                @if (!User.IsInRole("Employee"))
+                {
                     <td>
                         <a asp-action="Edit" asp-route-id="@provider.ProviderId" class="btn btn-primary">Edit</a>
                         <form asp-action="Delete" asp-route-id="@provider.ProviderId" method="post"
@@ -38,12 +38,12 @@
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
-               @*  } *@
+                }
             </tr>
         }
     </tbody>
 </table>
-@* @if (User.IsInRole("Admin"))
-{ *@
+@if (!User.IsInRole("Employee"))
+{
     <a asp-action="Add" asp-controller="Provider" class="btn btn-success">Add New Provider</a>
-@* } *@
+}

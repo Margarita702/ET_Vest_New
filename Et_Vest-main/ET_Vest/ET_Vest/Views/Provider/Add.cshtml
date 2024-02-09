@@ -18,11 +18,11 @@
         <label asp-for="City" class="form-label"></label>
         <input asp-for="City" class="form-control" />
     </div>
-    <div class="form-group">
+@*     <div class="form-group">
         <label asp-for="PrintEditionProviders"></label>
         <select asp-for="PrintEditionProviders"
                 asp-items="@(new SelectList(ViewBag.PrintedEditions,"Title"))"
                 class="form-control"></select>
-    </div>
+    </div> *@
     <button type="submit" class="btn btn-primary" asp-controller="Provider">Add</button>
 </form>

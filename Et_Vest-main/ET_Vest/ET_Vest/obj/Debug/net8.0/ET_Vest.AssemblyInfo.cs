@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ET_Vest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8981d4501ec939b1a02899cd718b92adea8ac6b6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4f7ed7a20800a7769a346d04e165be0e7c91893")]
 [assembly: System.Reflection.AssemblyProductAttribute("ET_Vest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ET_Vest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

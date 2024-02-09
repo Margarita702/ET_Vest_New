@@ -29,7 +29,8 @@ namespace ET_Vest.Controllers
         }
 
         //Add Provider
-        // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Owner")]
+
         public IActionResult Add()
         {
             ViewBag.PrintedEditions = context.PrintedEditionProviders.Include
@@ -47,7 +48,8 @@ namespace ET_Vest.Controllers
         }
 
         //Update Provider
-        //  [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Owner")]
+
         public IActionResult Edit(int id)
         {
             var provider = context.Providers.Find(id);
@@ -75,14 +77,14 @@ namespace ET_Vest.Controllers
             //update provider details
             context.Providers.Update(viewModel.Provider);
             //update printed edition provider details
-            context.Entry(viewModel.PrintedEditionProvider).State = EntityState.Modified;
+          //  context.Entry(viewModel.PrintedEditionProvider).State = EntityState.Modified;
             context.SaveChanges();
             return RedirectToAction("Index");
 
         }
 
         [HttpPost]
-        //   [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Owner")]
         public IActionResult Delete(int id)
         {
             var provider = context.Providers.Find(id);

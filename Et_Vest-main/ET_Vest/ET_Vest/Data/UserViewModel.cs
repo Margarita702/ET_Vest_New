@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cinema.Data
+namespace ET_Vest.Data
 {
     public class UserViewModel
     {
